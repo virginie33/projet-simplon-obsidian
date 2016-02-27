@@ -1,0 +1,27 @@
+
+<%= form_tag "/articless/#{@article.id}", method: "patch" do %>
+  <input type="text" name="title" value="<%= @article.title %>" />
+  <input type="submit" value="Modifier l'article" />
+  <p><a href="/articles">Retourner à l’index</a></p>
+
+<% end %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</p>
+ 
+<h2>Comments</h2>
+<%= render @article.comments %>
+ 
+<h2>Add a comment:</h2>
+<%= form_for([@article, @article.comments.build]) do |f| %>
+ <% end %>
+ 
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
